@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %}Meu Perfil | TN-Keys{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+
+<!-- CABEÇALHO -->
+
+<div class="text-center mb-5">
+
+    <span class="badge bg-danger px-3 py-2 mb-3">
+        MINHA CONTA
+    </span>
+
+    <h1 class="display-5 fw-bold text-white">
+        Meu Perfil
+    </h1>
+
+    <p class="text-secondary mx-auto" style="max-width: 600px;">
+        Gerencie suas informações e acompanhe sua conta TN-Keys.
+    </p>
+
+</div>
+
+
+<!-- PERFIL -->
+
+<div class="row justify-content-center">
+
+    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+
+        <div class="card bg-dark border-secondary shadow-lg overflow-hidden text-center">
+
+
+            <!-- BANNER -->
+
+            <div class="p-4"
+                 style="background: linear-gradient(135deg, #dc3545, #74131d, #111);">
+
+                <div class="bg-black border border-secondary rounded-circle
+                            d-flex align-items-center justify-content-center
+                            mx-auto shadow"
+                     style="width: 110px; height: 110px;">
+
+                    <span style="font-size: 52px;">
+                        👤
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- IDENTIDADE -->
+
+            <div class="card-body p-4">
+
+                <h2 class="text-white fw-bold mb-2">
+                    {{ user.username }}
+                </h2>
+
+                <p class="text-secondary mb-3">
+                    Membro da TN-Keys
+                </p>
+
+                <span class="badge border border-success text-success
+                             bg-transparent px-3 py-2">
+
+                    <span>●</span>
+                    Conta ativa
+
+                </span>
+
+            </div>
+
+
+            <!-- INFORMAÇÕES -->
+
+            <div class="card-body border-top border-secondary p-4">
+
+                <h3 class="h5 text-white mb-4">
+                    Informações da conta
+                </h3>
+
+
+                <div class="bg-black border border-secondary rounded p-3 mb-3">
+
+                    <div class="fs-3 mb-2">
+                        👤
+                    </div>
+
+                    <small class="text-secondary d-block">
+                        Usuário
+                    </small>
+
+                    <span class="text-white fw-semibold">
+                        {{ user.username }}
+                    </span>
+
+                </div>
+
+
+                <div class="bg-black border border-secondary rounded p-3 mb-3">
+
+                    <div class="fs-3 mb-2">
+                        📧
+                    </div>
+
+                    <small class="text-secondary d-block">
+                        E-mail
+                    </small>
+
+                    <span class="text-white fw-semibold">
+                        {{ user.email|default:"Não informado" }}
+                    </span>
+
+                </div>
+
+
+                <div class="bg-black border border-secondary rounded p-3">
+
+                    <div class="fs-3 mb-2">
+                        📅
+
+</div>
+
+{% endblock %}
