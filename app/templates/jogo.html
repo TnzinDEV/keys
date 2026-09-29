@@ -7,101 +7,102 @@ Jogos - TN-Keys
 
 {% block content %}
 
-<section class="jogos">
-
-```
 <div class="jogos-container">
 
-    <h1>Jogos em destaque</h1>
-    <p class="descricao">
-        Confira alguns dos jogos disponíveis na TN-Keys.
-    </p>
+<div class="jogos-header">
+    <div>
+        <span class="titulo-tag">TN-KEYS STORE</span>
+        <h1>Jogos em destaque</h1>
+        <p class="descricao">
+            Encontre seus próximos jogos e aproveite nossas ofertas.
+        </p>
+    </div>
+</div>
 
-    <div class="jogos-grid">
+<div class="jogos-grid">
 
-        <!-- JOGO 1 -->
-        <div class="jogo-card">
+    {% for produto in produtos %}
 
-            <div class="jogo-imagem">
-                <span>GAME</span>
-            </div>
+    <div class="jogo-card">
 
-            <div class="jogo-info">
-                <h2>Cyber Warriors</h2>
+        <div class="jogo-imagem">
 
-                <p>
-                    Ação e aventura em um mundo futurista cheio de desafios.
-                </p>
+            {% if produto.imagem %}
+                <img src="{{ produto.imagem }}" alt="{{ produto.nome }}">
+            {% else %}
+                <div class="imagem-placeholder">
+                    <span>🎮</span>
+                    <small>TN-KEYS</small>
+                </div>
+            {% endif %}
 
-                <span class="preco">
-                    R$ 59,90
-                </span>
-
-                <a href="#" class="btn">
-                    Comprar
-                </a>
-            </div>
-
-        </div>
-
-
-        <!-- JOGO 2 -->
-        <div class="jogo-card">
-
-            <div class="jogo-imagem">
-                <span>GAME</span>
-            </div>
-
-            <div class="jogo-info">
-                <h2>Racing Legends</h2>
-
-                <p>
-                    Corra em pistas incríveis e dispute corridas eletrizantes.
-                </p>
-
-                <span class="preco">
-                    R$ 39,90
-                </span>
-
-                <a href="#" class="btn">
-                    Comprar
-                </a>
-            </div>
+            <span class="badge-jogo">
+                DIGITAL
+            </span>
 
         </div>
 
+        <div class="jogo-info">
 
-        <!-- JOGO 3 -->
-        <div class="jogo-card">
+            <h2>{{ produto.nome }}</h2>
 
-            <div class="jogo-imagem">
-                <span>GAME</span>
+            <p class="jogo-descricao">
+                {{ produto.descricao }}
+            </p>
+
+            <div class="jogo-detalhes">
+
+                <div class="preco-box">
+                    <small>Por apenas</small>
+                    <span class="preco">
+                        R$ {{ produto.preco }}
+                    </span>
+                </div>
+
+                {% if produto.estoque > 0 %}
+                    <span class="estoque">
+                        ✓ Em estoque
+                    </span>
+                {% else %}
+                    <span class="sem-estoque">
+                        Esgotado
+                    </span>
+                {% endif %}
+
             </div>
 
-            <div class="jogo-info">
-                <h2>Fantasy World</h2>
-
-                <p>
-                    Explore um mundo fantástico repleto de aventuras e mistérios.
-                </p>
-
-                <span class="preco">
-                    R$ 79,90
-                </span>
-
-                <a href="#" class="btn">
-                    Comprar
+            {% if produto.estoque > 0 %}
+                <a href="#" class="btn-comprar">
+                    Comprar agora
+                    <span>→</span>
                 </a>
-            </div>
+            {% else %}
+                <button class="btn-esgotado" disabled>
+                    Indisponível
+                </button>
+            {% endif %}
 
         </div>
 
     </div>
 
-</div>
-```
+    {% empty %}
 
-</section>
+    <div class="sem-produtos">
+        <span>🎮</span>
+        <h2>Nenhum jogo disponível</h2>
+        <p>
+            No momento não temos produtos cadastrados.
+        </p>
+    </div>
+
+    {% endfor %}
+
+</div>
+
+
+</div>
+
 
 {% endblock %}
 

@@ -306,3 +306,252 @@
         
         }
         
+
+.jogos-container {
+width: 100%;
+max-width: 1250px;
+margin: 0 auto;
+padding: 50px 25px;
+}
+
+.jogos-header {
+margin-bottom: 35px;
+}
+
+.titulo-tag {
+display: inline-block;
+margin-bottom: 8px;
+color: #ff3b3b;
+font-size: 12px;
+font-weight: 700;
+letter-spacing: 2px;
+}
+
+.jogos-header h1 {
+margin: 0;
+color: #ffffff;
+font-size: 38px;
+font-weight: 800;
+}
+
+.descricao {
+margin-top: 10px;
+color: #9b9b9b;
+font-size: 16px;
+}
+
+.jogos-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+gap: 25px;
+}
+
+.jogo-card {
+overflow: hidden;
+background: #151515;
+border: 1px solid #282828;
+border-radius: 14px;
+transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.jogo-card:hover {
+transform: translateY(-7px);
+border-color: #ff3333;
+box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+}
+
+.jogo-imagem {
+position: relative;
+width: 100%;
+height: 220px;
+overflow: hidden;
+background: #0d0d0d;
+}
+
+.jogo-imagem img {
+width: 100%;
+height: 100%;
+display: block;
+object-fit: cover;
+transition: transform 0.4s ease;
+}
+
+.jogo-card:hover .jogo-imagem img {
+transform: scale(1.06);
+}
+
+.badge-jogo {
+position: absolute;
+top: 14px;
+left: 14px;
+padding: 6px 10px;
+border-radius: 6px;
+background: #ff3333;
+color: #ffffff;
+font-size: 10px;
+font-weight: 800;
+letter-spacing: 1px;
+}
+
+.imagem-placeholder {
+width: 100%;
+height: 100%;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+color: #666666;
+}
+
+.imagem-placeholder span {
+font-size: 50px;
+}
+
+.imagem-placeholder small {
+margin-top: 8px;
+font-size: 11px;
+letter-spacing: 3px;
+}
+
+.jogo-info {
+padding: 22px;
+}
+
+.jogo-info h2 {
+margin: 0 0 10px;
+color: #ffffff;
+font-size: 21px;
+font-weight: 700;
+}
+
+.jogo-descricao {
+margin: 0 0 20px;
+color: #999999;
+font-size: 14px;
+line-height: 1.5;
+
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+overflow: hidden;
+
+}
+
+.jogo-detalhes {
+display: flex;
+align-items: flex-end;
+justify-content: space-between;
+margin-bottom: 18px;
+}
+
+.preco-box {
+display: flex;
+flex-direction: column;
+}
+
+.preco-box small {
+margin-bottom: 3px;
+color: #777777;
+font-size: 11px;
+}
+
+.preco {
+color: #ffffff;
+font-size: 24px;
+font-weight: 800;
+}
+
+.estoque {
+color: #42d77d;
+font-size: 12px;
+font-weight: 600;
+}
+
+.sem-estoque {
+color: #ff5555;
+font-size: 12px;
+font-weight: 600;
+}
+
+.btn-comprar {
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+padding: 13px 18px;
+border-radius: 8px;
+background: #ff3333;
+color: #ffffff;
+text-decoration: none;
+font-size: 14px;
+font-weight: 700;
+transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn-comprar:hover {
+background: #e52222;
+color: #ffffff;
+transform: translateY(-2px);
+}
+
+.btn-comprar span {
+font-size: 18px;
+}
+
+.btn-esgotado {
+width: 100%;
+padding: 13px 18px;
+border: 0;
+border-radius: 8px;
+background: #292929;
+color: #777777;
+font-size: 14px;
+font-weight: 700;
+cursor: not-allowed;
+}
+
+.sem-produtos {
+grid-column: 1 / -1;
+padding: 70px 20px;
+text-align: center;
+background: #151515;
+border: 1px solid #282828;
+border-radius: 14px;
+}
+
+.sem-produtos span {
+font-size: 45px;
+}
+
+.sem-produtos h2 {
+margin: 15px 0 5px;
+color: #ffffff;
+}
+
+.sem-produtos p {
+margin: 0;
+color: #888888;
+}
+
+@media (max-width: 600px) {
+
+
+.jogos-container {
+    padding: 35px 15px;
+}
+
+.jogos-header h1 {
+    font-size: 30px;
+}
+
+.jogos-grid {
+    grid-template-columns: 1fr;
+}
+
+.jogo-imagem {
+    height: 230px;
+}
+
+
+}
