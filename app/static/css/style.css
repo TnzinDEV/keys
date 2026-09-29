@@ -1,0 +1,308 @@
+.home {
+    min-height: 70vh;
+    
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    text-align: center;
+  
+    
+    }
+    
+    .home-container {
+    max-width: 700px;
+    padding: 40px;
+    }
+    
+    .home-container h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+    }
+    
+    .home-container p {
+    color: #aaa;
+    font-size: 18px;
+    margin-bottom: 30px;
+    }
+    
+    .btn {
+    display: inline-block;
+    
+  
+    padding: 12px 25px;
+    
+    background-color: #ff2b2b;
+    color: white;
+    
+    text-decoration: none;
+    border-radius: 6px;
+    
+    transition: 0.2s;
+ 
+    
+    }
+    
+    .btn:hover {
+    background-color: #d91f1f;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+      
+      body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #fff;
+      }
+      
+      /* NAVBAR */
+      
+      .navbar {
+      background-color: #181818;
+      border-bottom: 1px solid #333;
+      }
+      
+      .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 18px 25px;
+      
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+   
+      
+      }
+      
+      .logo {
+      color: #ff2b2b;
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: bold;
+      }
+      
+      .nav-links {
+      list-style: none;
+   
+      display: flex;
+      gap: 25px;
+     
+      
+      }
+      
+      .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      transition: 0.2s;
+      }
+      
+      .nav-links a:hover {
+      color: #ff2b2b;
+      }
+      
+      /* CONTEÚDO */
+      
+      main {
+      flex: 1;
+      width: 100%;
+      }
+      
+      /* FOOTER */
+      
+      .footer {
+      background-color: #181818;
+      border-top: 1px solid #333;
+      padding: 25px 0;
+      }
+      
+      .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 25px;
+      
+   
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+     
+      
+      }
+      
+      .footer p {
+      color: #aaa;
+      font-size: 14px;
+      }
+      
+      .footer-links {
+      display: flex;
+      gap: 20px;
+      }
+      
+      .footer-links a {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 14px;
+      }
+      
+      .footer-links a:hover {
+      color: #ff2b2b;
+      }
+      
+      /* RESPONSIVIDADE */
+      
+      @media (max-width: 700px) {
+      
+     
+      .navbar-container,
+      .footer-container {
+          flex-direction: column;
+          gap: 15px;
+          text-align: center;
+      }
+      
+      .nav-links {
+          gap: 15px;
+          flex-wrap: wrap;
+          justify-content: center;
+      }
+     
+      
+      }
+      
+      .jogos {
+        padding: 60px 25px;
+        }
+        
+        .jogos-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        }
+        
+        .jogos-container h1 {
+        text-align: center;
+        font-size: 40px;
+        margin-bottom: 10px;
+        }
+        
+        .descricao {
+        text-align: center;
+        color: #aaa;
+        margin-bottom: 40px;
+        }
+        
+        /* GRID */
+        
+        .jogos-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+        }
+        
+        /* CARD */
+        
+        .jogo-card {
+        background-color: #181818;
+        border: 1px solid #333;
+        border-radius: 8px;
+        overflow: hidden;
+        
+   
+        transition: 0.2s;
+
+        
+        }
+        
+        .jogo-card:hover {
+        transform: translateY(-5px);
+        border-color: #ff2b2b;
+        }
+        
+        /* IMAGEM */
+        
+        .jogo-imagem {
+        height: 180px;
+        
+            display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        background-color: #252525;
+
+        
+        }
+        
+        .jogo-imagem span {
+        color: #666;
+        font-size: 20px;
+        font-weight: bold;
+        }
+        
+        /* INFORMAÇÕES */
+        
+        .jogo-info {
+        padding: 20px;
+        }
+        
+        .jogo-info h2 {
+        margin-bottom: 10px;
+        }
+        
+        .jogo-info p {
+        color: #aaa;
+        font-size: 14px;
+        line-height: 1.5;
+        min-height: 65px;
+        }
+        
+        /* PREÇO */
+        
+        .preco {
+        display: block;
+        
+     
+        color: #fff;
+        font-size: 22px;
+        font-weight: bold;
+        
+        margin: 15px 0;
+      
+        
+        }
+        
+        /* BOTÃO */
+        
+        .jogo-info .btn {
+        width: 100%;
+        text-align: center;
+        }
+        
+        /* RESPONSIVO */
+        
+        @media (max-width: 900px) {
+        
+       
+        .jogos-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        
+        }
+        
+        @media (max-width: 600px) {
+        
+        .jogos-grid {
+            grid-template-columns: 1fr;
+        }
+       
+        
+        }
+        
