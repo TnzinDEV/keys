@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Produto
 
 # Create your views here.
@@ -20,3 +20,8 @@ def sobre_view(request):
 
 def perfil_view(request):
     return render(request, 'perfil.html')
+
+
+def detalhes_jogo_view(request, id):
+    produto_banco = get_object_or_404(Produto, id=id)
+    return render(request, 'detalhes.html',{'produto': produto_banco})

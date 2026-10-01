@@ -1,4 +1,3 @@
-
 {% extends "base.html" %}
 
 {% block title %}
@@ -9,38 +8,38 @@ Jogos - TN-Keys
 
 <div class="jogos-container">
 
-<div class="jogos-header">
-    <div>
-        <span class="titulo-tag">TN-KEYS STORE</span>
-        <h1>Jogos em destaque</h1>
-        <p class="descricao">
-            Encontre seus próximos jogos e aproveite nossas ofertas.
-        </p>
-    </div>
-</div>
-
-<div class="jogos-grid">
-
-    {% for produto in produtos %}
-
-    <div class="jogo-card">
-
-        <div class="jogo-imagem">
-
-            {% if produto.imagem %}
-                <img src="{{ produto.imagem }}" alt="{{ produto.nome }}">
-            {% else %}
-                <div class="imagem-placeholder">
-                    <span>🎮</span>
-                    <small>TN-KEYS</small>
-                </div>
-            {% endif %}
-
-            <span class="badge-jogo">
-                DIGITAL
-            </span>
-
+    <div class="jogos-header">
+        <div>
+            <span class="titulo-tag">TN-KEYS STORE</span>
+            <h1>Jogos em destaque</h1>
+            <p class="descricao">
+                Encontre seus próximos jogos e aproveite nossas ofertas.
+            </p>
         </div>
+    </div>
+
+    <div class="jogos-grid">
+
+        {% for produto in produtos %}
+        <a href="{% url 'detalhes' produto.id %}" class="text-decoration-none">
+            <div class="jogo-card">
+
+                <div class="jogo-imagem">
+
+                    {% if produto.imagem %}
+                    <img src="{{ produto.imagem }}" alt="{{ produto.nome }}">
+                    {% else %}
+                    <div class="imagem-placeholder">
+                        <span>🎮</span>
+                        <small>TN-KEYS</small>
+                    </div>
+                    {% endif %}
+
+                    <span class="badge-jogo">
+                        DIGITAL
+                    </span>
+                </a>
+                </div>
 
         <div class="jogo-info">
 
@@ -60,26 +59,26 @@ Jogos - TN-Keys
                 </div>
 
                 {% if produto.estoque > 0 %}
-                    <span class="estoque">
-                        ✓ Em estoque
-                    </span>
+                <span class="estoque">
+                    ✓ Em estoque
+                </span>
                 {% else %}
-                    <span class="sem-estoque">
-                        Esgotado
-                    </span>
+                <span class="sem-estoque">
+                    Esgotado
+                </span>
                 {% endif %}
 
             </div>
 
             {% if produto.estoque > 0 %}
-                <a href="#" class="btn-comprar">
-                    Comprar agora
-                    <span>→</span>
-                </a>
+            <a href="#" class="btn-comprar">
+                Comprar agora
+                <span>→</span>
+            </a>
             {% else %}
-                <button class="btn-esgotado" disabled>
-                    Indisponível
-                </button>
+            <button class="btn-esgotado" disabled>
+                Indisponível
+            </button>
             {% endif %}
 
         </div>
@@ -105,4 +104,3 @@ Jogos - TN-Keys
 
 
 {% endblock %}
-

@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ produto.nome }} - TN-Keys
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+<div class="row justify-content-center">
+
+    <div class="col-12 col-lg-10">
+
+        <div class="card border-0 shadow-lg overflow-hidden">
+
+            <div class="row g-0">
+
+                <!-- IMAGEM DO PRODUTO -->
+                <div class="col-md-6">
+
+                    <div class="h-100 bg-dark d-flex align-items-center justify-content-center">
+
+                        {% if produto.imagem %}
+
+                            <img
+                                src="{{ produto.imagem }}"
+                                alt="{{ produto.nome }}"
+                                class="img-fluid w-100 h-100"
+                                style="object-fit: cover; min-height: 450px;"
+                            >
+
+                        {% else %}
+
+                            <div class="text-center text-white py-5">
+
+                                <div class="display-1 mb-3">
+                                    🎮
+                                </div>
+
+                                <h5>TN-KEYS</h5>
+
+                                <p class="text-secondary mb-0">
+                                    Imagem não disponível
+                                </p>
+
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+
+                <!-- INFORMAÇÕES DO PRODUTO -->
+                <div class="col-md-6">
+
+                    <div class="card-body p-4 p-lg-5">
+
+                        <span class="badge bg-primary mb-3">
+                            JOGO DIGITAL
+                        </span>
+
+                        <h1 class="fw-bold mb-3">
+                            {{ produto.nome }}
+                        </h1>
+
+                        <p class="text-muted mb-4">
+                            {{ produto.descricao }}
+                        </p>
+
+
+                        <!-- PREÇO -->
+
+                        <div class="mb-4">
+
+                            <small class="text-muted d-block">
+                                Preço
+                            </small>
+
+                            <span class="fs-1 fw-bold text-success">
+                                R$ {{ produto.preco }}
+                            </span>
+
+                        </div>
+
+
+                        <!-- ESTOQUE -->
+
+                        <div class="mb-4">
+
+                            {% if produto.estoque > 0 %}
+
+                                <div class="alert alert-success d-flex align-items-center">
+
+                                    <span class="me-2">
+                                        ✓
+                                    </span>
+
+                                    <div>
+                                        <strong>Disponível</strong>
+                                        <br>
+                                        <small>
+                                            {{ produto.estoque }} unidade(s) em estoque
+                                        </small>
+                                    </div>
+
+                                </div>
+
+                            {% else %}
+
+                                <div class="alert alert-danger">
+
+                                    <strong>Produto esgotado</strong>
+
+                                    <br>
+
+                                    <small>
+                                        Este jogo está temporariamente indisponível.
+                                    </small>
+
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <!-- BOTÕES -->
+
+                        {% if produto.estoque > 0 %}
+
+                            <div class="d-grid gap-2">
+
+                                <a href="#" class="btn btn-primary btn-lg">
+                                    Comprar agora
+                                </a>
+
+                                <a href="{% url 'jogo' %}" class="btn btn-outline-secondary">
+                                    ← Voltar para jogos
+                                </a>
+
+                            </div>
+
+                        {% else %}
+
+                            <div class="d-grid gap-2">
+
+                                <button class="btn btn-secondary btn-lg" disabled>
+                                    Produto indisponível
+                                </button>
+
+                                <a href="{% url 'jogo' %}" class="btn btn-outline-secondary">
+                                    ← Voltar para jogos
+                                </a>
+
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+{% endblock %}

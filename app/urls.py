@@ -9,6 +9,7 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='login.html'),name='login'),
     path('logout/',auth_views.LogoutView.as_view(),name='logout'),
     path( 'perfil/', views.perfil_view, name='perfil' ),
+    path('jogo/<int:id>/' ,views.detalhes_jogo_view,name='detalhes')
 
 ]
  # as demais rotas (listar, detalhes, criar, editar, excluir) entram aqui

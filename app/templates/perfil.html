@@ -4,50 +4,65 @@
 
 {% block content %}
 
+ 
+
 <div class="container py-5">
 
 
 <!-- CABEÇALHO -->
-
 <div class="text-center mb-5">
 
-    <span class="badge bg-danger px-3 py-2 mb-3">
+    <span class="badge bg-danger rounded-pill px-3 py-2 mb-3">
+        <i class="bi bi-person-circle me-1"></i>
         MINHA CONTA
     </span>
 
-    <h1 class="display-5 fw-bold text-white">
+    <h1 class="display-5 fw-bold text-white mb-3">
         Meu Perfil
     </h1>
 
-    <p class="text-secondary mx-auto" style="max-width: 600px;">
-        Gerencie suas informações e acompanhe sua conta TN-Keys.
+    <p class="text-secondary mx-auto mb-0" style="max-width: 600px;">
+        Gerencie suas informações e acompanhe sua conta na TN-Keys.
     </p>
 
 </div>
 
 
 <!-- PERFIL -->
-
 <div class="row justify-content-center">
 
-    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+    <div class="col-12 col-lg-8 col-xl-7">
 
-        <div class="card bg-dark border-secondary shadow-lg overflow-hidden text-center">
-
+        <div class="card bg-dark border-secondary shadow-lg overflow-hidden">
 
             <!-- BANNER -->
+            <div class="position-relative"
+                 style="
+                    height: 180px;
+                    background:
+                    radial-gradient(circle at top right, rgba(220,53,69,.45), transparent 35%),
+                    linear-gradient(135deg, #dc3545 0%, #74131d 45%, #080808 100%);
+                 ">
 
-            <div class="p-4"
-                 style="background: linear-gradient(135deg, #dc3545, #74131d, #111);">
+                <div class="position-absolute top-0 start-0 w-100 h-100"
+                     style="background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,.45));">
+                </div>
 
-                <div class="bg-black border border-secondary rounded-circle
+            </div>
+
+
+            <!-- AVATAR -->
+            <div class="text-center"
+                 style="margin-top: -65px; position: relative;">
+
+                <div class="rounded-circle bg-black border border-3 border-danger
                             d-flex align-items-center justify-content-center
-                            mx-auto shadow"
-                     style="width: 110px; height: 110px;">
+                            mx-auto shadow-lg"
+                     style="width: 130px; height: 130px;">
 
-                    <span style="font-size: 52px;">
-                        👤
-                    </span>
+                    <i class="bi bi-person-fill text-danger"
+                       style="font-size: 4rem;">
+                    </i>
 
                 </div>
 
@@ -55,10 +70,9 @@
 
 
             <!-- IDENTIDADE -->
+            <div class="card-body text-center px-4 pt-3 pb-4">
 
-            <div class="card-body p-4">
-
-                <h2 class="text-white fw-bold mb-2">
+                <h2 class="text-white fw-bold mb-1">
                     {{ user.username }}
                 </h2>
 
@@ -66,10 +80,10 @@
                     Membro da TN-Keys
                 </p>
 
-                <span class="badge border border-success text-success
-                             bg-transparent px-3 py-2">
+                <span class="badge rounded-pill border border-success
+                             text-success bg-transparent px-3 py-2">
 
-                    <span>●</span>
+                    <i class="bi bi-check-circle-fill me-1"></i>
                     Conta ativa
 
                 </span>
@@ -78,52 +92,145 @@
 
 
             <!-- INFORMAÇÕES -->
+            <div class="border-top border-secondary p-4 p-md-5">
 
-            <div class="card-body border-top border-secondary p-4">
+                <div class="d-flex align-items-center mb-4">
 
-                <h3 class="h5 text-white mb-4">
-                    Informações da conta
-                </h3>
-
-
-                <div class="bg-black border border-secondary rounded p-3 mb-3">
-
-                    <div class="fs-3 mb-2">
-                        👤
+                    <div class="bg-danger bg-opacity-10 rounded-3 p-2 me-3">
+                        <i class="bi bi-person-vcard text-danger fs-4"></i>
                     </div>
 
-                    <small class="text-secondary d-block">
-                        Usuário
-                    </small>
+                    <div>
+                        <h3 class="h5 text-white fw-bold mb-1">
+                            Informações da conta
+                        </h3>
 
-                    <span class="text-white fw-semibold">
-                        {{ user.username }}
-                    </span>
+                        <small class="text-secondary">
+                            Dados vinculados ao seu perfil
+                        </small>
+                    </div>
 
                 </div>
 
 
-                <div class="bg-black border border-secondary rounded p-3 mb-3">
+                <!-- USUÁRIO -->
+                <div class="bg-black border border-secondary rounded-3 p-3 mb-3">
 
-                    <div class="fs-3 mb-2">
-                        📧
+                    <div class="d-flex align-items-center">
+
+                        <div class="bg-dark rounded-3 p-3 me-3">
+                            <i class="bi bi-person text-danger fs-4"></i>
+                        </div>
+
+                        <div class="text-start">
+
+                            <small class="text-secondary d-block mb-1">
+                                Usuário
+                            </small>
+
+                            <span class="text-white fw-semibold">
+                                {{ user.username }}
+                            </span>
+
+                        </div>
+
                     </div>
-
-                    <small class="text-secondary d-block">
-                        E-mail
-                    </small>
-
-                    <span class="text-white fw-semibold">
-                        {{ user.email|default:"Não informado" }}
-                    </span>
 
                 </div>
 
 
-                <div class="bg-black border border-secondary rounded p-3">
+                <!-- EMAIL -->
+                <div class="bg-black border border-secondary rounded-3 p-3 mb-3">
 
-                    <div class="fs-3 mb-2">
-                        📅
+                    <div class="d-flex align-items-center">
+
+                        <div class="bg-dark rounded-3 p-3 me-3">
+                            <i class="bi bi-envelope text-danger fs-4"></i>
+                        </div>
+
+                        <div class="text-start overflow-hidden">
+
+                            <small class="text-secondary d-block mb-1">
+                                E-mail
+                            </small>
+
+                            <span class="text-white fw-semibold text-break">
+                                {{ user.email|default:"Não informado" }}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DATA DE CADASTRO -->
+                <div class="bg-black border border-secondary rounded-3 p-3">
+
+                    <div class="d-flex align-items-center">
+
+                        <div class="bg-dark rounded-3 p-3 me-3">
+                            <i class="bi bi-calendar3 text-danger fs-4"></i>
+                        </div>
+
+                        <div class="text-start">
+
+                            <small class="text-secondary d-block mb-1">
+                                Membro desde
+                            </small>
+
+                            <span class="text-white fw-semibold">
+                                {{ user.date_joined|date:"d/m/Y" }}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- AÇÕES -->
+            <div class="border-top border-secondary p-4">
+
+                <div class="row g-3">
+
+                    <div class="col-12 col-md-6">
+
+                        <a href="#"
+                           class="btn btn-danger w-100 py-2 fw-semibold">
+
+                            <i class="bi bi-pencil-square me-2"></i>
+                            Editar perfil
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-12 col-md-6">
+
+                        <a href="/"
+                           class="btn btn-outline-light w-100 py-2 fw-semibold">
+
+                            <i class="bi bi-shop me-2"></i>
+                            Voltar à loja
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 </div>
 
