@@ -1,174 +1,105 @@
 {% extends "base.html" %}
 
-{% block title %}
-{{ produto.nome }} - TN-Keys
-{% endblock %}
+{% block title %}{{ produto.nome }} | TN-Keys{% endblock %}
+{% block meta_description %}{{ produto.descricao|default:produto.nome|truncatechars:150 }}{% endblock %}
 
 {% block content %}
 
-<div class="container py-5">
-<div class="row justify-content-center">
+<div class="container page-section">
 
-    <div class="col-12 col-lg-10">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Início</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'jogo' %}">Jogos</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ produto.nome }}</li>
+        </ol>
+    </nav>
 
-        <div class="card border-0 shadow-lg overflow-hidden">
+    <div class="card shadow-lg overflow-hidden">
+        <div class="row g-0">
 
-            <div class="row g-0">
+            <!-- IMAGEM -->
+            <div class="col-md-6">
+                <div class="detalhe-imagem d-flex align-items-center justify-content-center">
 
-                <!-- IMAGEM DO PRODUTO -->
-                <div class="col-md-6">
-
-                    <div class="h-100 bg-dark d-flex align-items-center justify-content-center">
-
-                        {% if produto.imagem %}
-
-                            <img
-                                src="{{ produto.imagem }}"
-                                alt="{{ produto.nome }}"
-                                class="img-fluid w-100 h-100"
-                                style="object-fit: cover; min-height: 450px;"
-                            >
-
-                        {% else %}
-
-                            <div class="text-center text-white py-5">
-
-                                <div class="display-1 mb-3">
-                                    🎮
-                                </div>
-
-                                <h5>TN-KEYS</h5>
-
-                                <p class="text-secondary mb-0">
-                                    Imagem não disponível
-                                </p>
-
-                            </div>
-
-                        {% endif %}
-
-                    </div>
+                    {% if produto.imagem %}
+                        <img src="{{ produto.imagem }}" alt="Capa de {{ produto.nome }}" decoding="async">
+                    {% else %}
+                        <div class="text-center py-5">
+                            <div class="display-1 mb-3" aria-hidden="true">🎮</div>
+                            <h2 class="h5">TN-KEYS</h2>
+                            <p class="text-secondary mb-0">Imagem não disponível</p>
+                        </div>
+                    {% endif %}
 
                 </div>
+            </div>
 
+            <!-- INFORMAÇÕES -->
+            <div class="col-md-6">
+                <div class="card-body p-4 p-lg-5 d-flex flex-column h-100">
 
-                <!-- INFORMAÇÕES DO PRODUTO -->
-                <div class="col-md-6">
+                    <div>
+                        <span class="badge text-bg-danger mb-3">JOGO DIGITAL</span>
 
-                    <div class="card-body p-4 p-lg-5">
+                        <h1 class="fw-bold mb-3">{{ produto.nome }}</h1>
 
-                        <span class="badge bg-primary mb-3">
-                            JOGO DIGITAL
-                        </span>
-
-                        <h1 class="fw-bold mb-3">
-                            {{ produto.nome }}
-                        </h1>
-
-                        <p class="text-muted mb-4">
-                            {{ produto.descricao }}
+                        <p class="text-secondary mb-4">
+                            {{ produto.descricao|default:"Sem descrição disponível."|linebreaksbr }}
                         </p>
+                    </div>
 
+                    <div class="mb-4">
+                        <small class="text-secondary d-block mb-1">Preço</small>
+                        <span class="detalhe-preco">R$ {{ produto.preco|floatformat:2 }}</span>
+                    </div>
 
-                        <!-- PREÇO -->
-
-                        <div class="mb-4">
-
-                            <small class="text-muted d-block">
-                                Preço
-                            </small>
-
-                            <span class="fs-1 fw-bold text-success">
-                                R$ {{ produto.preco }}
-                            </span>
-
+                    <!-- ESTOQUE -->
+                    {% if produto.estoque > 0 %}
+                        <div class="alert alert-success d-flex align-items-center gap-3 mb-4" role="status">
+                            <i class="bi bi-check-circle-fill fs-4" aria-hidden="true"></i>
+                            <div>
+                                <strong>Disponível</strong><br>
+                                <small>{{ produto.estoque }} unidade{{ produto.estoque|pluralize }} em estoque</small>
+                            </div>
                         </div>
-
-
-                        <!-- ESTOQUE -->
-
-                        <div class="mb-4">
-
-                            {% if produto.estoque > 0 %}
-
-                                <div class="alert alert-success d-flex align-items-center">
-
-                                    <span class="me-2">
-                                        ✓
-                                    </span>
-
-                                    <div>
-                                        <strong>Disponível</strong>
-                                        <br>
-                                        <small>
-                                            {{ produto.estoque }} unidade(s) em estoque
-                                        </small>
-                                    </div>
-
-                                </div>
-
-                            {% else %}
-
-                                <div class="alert alert-danger">
-
-                                    <strong>Produto esgotado</strong>
-
-                                    <br>
-
-                                    <small>
-                                        Este jogo está temporariamente indisponível.
-                                    </small>
-
-                                </div>
-
-                            {% endif %}
-
+                    {% else %}
+                        <div class="alert alert-danger d-flex align-items-center gap-3 mb-4" role="status">
+                            <i class="bi bi-x-circle-fill fs-4" aria-hidden="true"></i>
+                            <div>
+                                <strong>Produto esgotado</strong><br>
+                                <small>Este jogo está temporariamente indisponível.</small>
+                            </div>
                         </div>
+                    {% endif %}
 
-
-                        <!-- BOTÕES -->
+                    <!-- AÇÕES -->
+                    <div class="d-grid gap-2 mt-auto">
 
                         {% if produto.estoque > 0 %}
-
-                            <div class="d-grid gap-2">
-
-                                <a href="#" class="btn btn-primary btn-lg">
-                                    Comprar agora
-                                </a>
-
-                                <a href="{% url 'jogo' %}" class="btn btn-outline-secondary">
-                                    ← Voltar para jogos
-                                </a>
-
-                            </div>
-
+                            {# TODO: ligar ao fluxo de compra quando existir #}
+                            <a href="#" class="btn btn-danger btn-lg">
+                                <i class="bi bi-cart-check me-2" aria-hidden="true"></i>Comprar agora
+                            </a>
                         {% else %}
-
-                            <div class="d-grid gap-2">
-
-                                <button class="btn btn-secondary btn-lg" disabled>
-                                    Produto indisponível
-                                </button>
-
-                                <a href="{% url 'jogo' %}" class="btn btn-outline-secondary">
-                                    ← Voltar para jogos
-                                </a>
-
-                            </div>
-
+                            <button type="button" class="btn btn-secondary btn-lg" disabled>
+                                Produto indisponível
+                            </button>
                         {% endif %}
+
+                        <a href="{% url 'jogo' %}" class="btn btn-outline-secondary">
+                            <i class="bi bi-arrow-left me-1" aria-hidden="true"></i>Voltar para jogos
+                        </a>
 
                     </div>
 
                 </div>
-
             </div>
 
         </div>
-
     </div>
 
-</div>
 </div>
 
 {% endblock %}

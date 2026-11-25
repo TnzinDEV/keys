@@ -1,10 +1,9 @@
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 
 from .forms import CadastroForm
 from .models import Produto
-
-from django.contrib import messages
 
 def home_view(request):
     return render(request, 'home.html')
@@ -18,6 +17,7 @@ def jogo_view(request):
 def sobre_view(request):
     return render(request, 'sobre.html')
 
+@login_required
 def perfil_view(request):
     return render(request, 'perfil.html')
 
