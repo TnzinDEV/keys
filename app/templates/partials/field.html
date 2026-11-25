@@ -1,0 +1,31 @@
+{# Campo de formulário padronizado. Uso: {% include "partials/field.html" with field=form.username icon="bi-person" %}  (password=True adiciona o botão de mostrar senha) #}
+<div class="mb-3{% if field.errors %} has-error{% endif %}">
+
+    <label for="{{ field.id_for_label }}" class="form-label fw-semibold">
+        {% if icon %}<i class="bi {{ icon }} me-1" aria-hidden="true"></i>{% endif %}{{ field.label }}
+    </label>
+
+    {% if password %}
+        <div class="input-group">
+            {{ field }}
+            <button type="button"
+                    class="btn btn-outline-secondary"
+                    data-toggle-password="{{ field.id_for_label }}"
+                    aria-label="Mostrar ou ocultar senha"
+                    aria-pressed="false">
+                <i class="bi bi-eye" aria-hidden="true"></i>
+            </button>
+        </div>
+    {% else %}
+        {{ field }}
+    {% endif %}
+
+    {% if field.help_text %}
+        <div class="form-text text-secondary mt-2">{{ field.help_text|safe }}</div>
+    {% endif %}
+
+    {% for error in field.errors %}
+        <div class="field-error" role="alert">{{ error }}</div>
+    {% endfor %}
+
+</div>

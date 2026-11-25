@@ -1,106 +1,159 @@
+<<<<<<< HEAD
 {% extends "base.html" %}
 
-{% block title %}
-Jogos - TN-Keys
-{% endblock %}
+{% block title %}Jogos | TN-Keys{% endblock %}
 
 {% block content %}
 
 <div class="jogos-container">
 
-    <div class="jogos-header">
-        <div>
-            <span class="titulo-tag">TN-KEYS STORE</span>
-            <h1>Jogos em destaque</h1>
-            <p class="descricao">
-                Encontre seus próximos jogos e aproveite nossas ofertas.
-            </p>
-        </div>
-    </div>
+    <header class="page-header">
+        <span class="tag">TN-Keys Store</span>
+        <h1>Jogos em destaque</h1>
+        <p>Encontre seus próximos jogos e aproveite nossas ofertas.</p>
+    </header>
 
     <div class="jogos-grid">
 
         {% for produto in produtos %}
-        <a href="{% url 'detalhes' produto.id %}" class="text-decoration-none">
-            <div class="jogo-card">
+        <article class="jogo-card{% if produto.estoque <= 0 %} jogo-card--esgotado{% endif %}">
 
-                <div class="jogo-imagem">
-
-                    {% if produto.imagem %}
-                    <img src="{{ produto.imagem }}" alt="{{ produto.nome }}">
-                    {% else %}
-                    <div class="imagem-placeholder">
-                        <span>🎮</span>
+            <div class="jogo-imagem">
+                {% if produto.imagem %}
+                    <img src="{{ produto.imagem }}" alt="Capa de {{ produto.nome }}" loading="lazy" decoding="async">
+                {% else %}
+                    <div class="imagem-placeholder" role="img" aria-label="Sem imagem">
+                        <span class="icone" aria-hidden="true">🎮</span>
                         <small>TN-KEYS</small>
                     </div>
+                {% endif %}
+                <span class="badge-jogo">DIGITAL</span>
+            </div>
+
+            <div class="jogo-info">
+
+                <h2 class="jogo-titulo">
+                    {# stretched-link: o card inteiro vira um único link, sem <a> aninhado #}
+                    <a href="{% url 'detalhes' produto.id %}" class="stretched-link">{{ produto.nome }}</a>
+                </h2>
+
+                <p class="jogo-descricao">{{ produto.descricao|default:"Sem descrição disponível." }}</p>
+
+                <div class="jogo-detalhes">
+                    <div class="preco-box">
+                        <small>Por apenas</small>
+                        <span class="preco">R$ {{ produto.preco|floatformat:2 }}</span>
+                    </div>
+
+                    {% if produto.estoque > 0 %}
+                        <span class="estoque"><i class="bi bi-check-circle-fill me-1" aria-hidden="true"></i>Em estoque</span>
+                    {% else %}
+                        <span class="sem-estoque"><i class="bi bi-x-circle-fill me-1" aria-hidden="true"></i>Esgotado</span>
                     {% endif %}
-
-                    <span class="badge-jogo">
-                        DIGITAL
-                    </span>
-                </a>
-                </div>
-
-        <div class="jogo-info">
-
-            <h2>{{ produto.nome }}</h2>
-
-            <p class="jogo-descricao">
-                {{ produto.descricao }}
-            </p>
-
-            <div class="jogo-detalhes">
-
-                <div class="preco-box">
-                    <small>Por apenas</small>
-                    <span class="preco">
-                        R$ {{ produto.preco }}
-                    </span>
                 </div>
 
                 {% if produto.estoque > 0 %}
-                <span class="estoque">
-                    ✓ Em estoque
-                </span>
+                    <span class="btn-comprar" aria-hidden="true">Ver detalhes <i class="bi bi-arrow-right"></i></span>
                 {% else %}
-                <span class="sem-estoque">
-                    Esgotado
-                </span>
+                    <span class="btn-esgotado" aria-hidden="true">Indisponível</span>
                 {% endif %}
 
             </div>
 
-            {% if produto.estoque > 0 %}
-            <a href="#" class="btn-comprar">
-                Comprar agora
-                <span>→</span>
-            </a>
-            {% else %}
-            <button class="btn-esgotado" disabled>
-                Indisponível
-            </button>
-            {% endif %}
+        </article>
 
+        {% empty %}
+
+        <div class="sem-produtos">
+            <div class="icone" aria-hidden="true">🎮</div>
+            <h2>Nenhum jogo disponível</h2>
+            <p>No momento não temos produtos cadastrados.</p>
         </div>
 
+        {% endfor %}
+
     </div>
 
-    {% empty %}
-
-    <div class="sem-produtos">
-        <span>🎮</span>
-        <h2>Nenhum jogo disponível</h2>
-        <p>
-            No momento não temos produtos cadastrados.
-        </p>
-    </div>
-
-    {% endfor %}
-
 </div>
-
-
-</div>
-
 
 {% endblock %}
+=======
+{% extends "base.html" %}
+
+{% block title %}Jogos | TN-Keys{% endblock %}
+
+{% block content %}
+
+<div class="jogos-container">
+
+    <header class="page-header">
+        <span class="tag">TN-Keys Store</span>
+        <h1>Jogos em destaque</h1>
+        <p>Encontre seus próximos jogos e aproveite nossas ofertas.</p>
+    </header>
+
+    <div class="jogos-grid">
+
+        {% for produto in produtos %}
+        <article class="jogo-card{% if produto.estoque <= 0 %} jogo-card--esgotado{% endif %}">
+
+            <div class="jogo-imagem">
+                {% if produto.imagem %}
+                    <img src="{{ produto.imagem }}" alt="Capa de {{ produto.nome }}" loading="lazy" decoding="async">
+                {% else %}
+                    <div class="imagem-placeholder" role="img" aria-label="Sem imagem">
+                        <span class="icone" aria-hidden="true">🎮</span>
+                        <small>TN-KEYS</small>
+                    </div>
+                {% endif %}
+                <span class="badge-jogo">DIGITAL</span>
+            </div>
+
+            <div class="jogo-info">
+
+                <h2 class="jogo-titulo">
+                    {# stretched-link: o card inteiro vira um único link, sem <a> aninhado #}
+                    <a href="{% url 'detalhes' produto.id %}" class="stretched-link">{{ produto.nome }}</a>
+                </h2>
+
+                <p class="jogo-descricao">{{ produto.descricao|default:"Sem descrição disponível." }}</p>
+
+                <div class="jogo-detalhes">
+                    <div class="preco-box">
+                        <small>Por apenas</small>
+                        <span class="preco">R$ {{ produto.preco|floatformat:2 }}</span>
+                    </div>
+
+                    {% if produto.estoque > 0 %}
+                        <span class="estoque"><i class="bi bi-check-circle-fill me-1" aria-hidden="true"></i>Em estoque</span>
+                    {% else %}
+                        <span class="sem-estoque"><i class="bi bi-x-circle-fill me-1" aria-hidden="true"></i>Esgotado</span>
+                    {% endif %}
+                </div>
+
+                {% if produto.estoque > 0 %}
+                    <span class="btn-comprar" aria-hidden="true">Ver detalhes <i class="bi bi-arrow-right"></i></span>
+                {% else %}
+                    <span class="btn-esgotado" aria-hidden="true">Indisponível</span>
+                {% endif %}
+
+            </div>
+
+        </article>
+
+        {% empty %}
+
+        <div class="sem-produtos">
+            <div class="icone" aria-hidden="true">🎮</div>
+            <h2>Nenhum jogo disponível</h2>
+            <p>No momento não temos produtos cadastrados.</p>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}
+>>>>>>> b24fc8c7fd829fce604b98f2bb869ff40ed450cb

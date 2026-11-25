@@ -1,22 +1,81 @@
+<<<<<<< HEAD
 {% extends "base.html" %}
+
+{% block title %}TN-Keys | Sua loja de jogos digitais{% endblock %}
+
 {% block content %}
 
-<section class="home">
+<section class="hero">
+    <div class="container">
 
-    <div class="home-container">
+        <span class="tag">TN-Keys Store</span>
 
-        <h1>Bem-vindo à TN-Keys</h1>
+        <h1 class="mb-3">Bem-vindo à TN<span class="text-danger">-</span>Keys</h1>
 
-        <p>
+        <p class="lead mb-4">
             Encontre jogos, keys e ofertas em um só lugar.
         </p>
 
-        <a href="/jogo" class="btn">
-            Ver jogos
-        </a>
+        <div class="d-flex flex-column flex-sm-row justify-content-center gap-2">
+
+            <a href="{% url 'jogo' %}" class="btn btn-danger btn-lg px-4">
+                <i class="bi bi-controller me-2" aria-hidden="true"></i>Ver jogos
+            </a>
+
+            {% if user.is_authenticated %}
+                <a href="{% url 'perfil' %}" class="btn btn-outline-light btn-lg px-4">
+                    <i class="bi bi-person-circle me-2" aria-hidden="true"></i>Meu perfil
+                </a>
+            {% else %}
+                <a href="{% url 'cadastro' %}" class="btn btn-outline-light btn-lg px-4">
+                    <i class="bi bi-person-plus me-2" aria-hidden="true"></i>Criar conta
+                </a>
+            {% endif %}
+
+        </div>
 
     </div>
-
 </section>
 
 {% endblock %}
+=======
+{% extends "base.html" %}
+
+{% block title %}TN-Keys | Sua loja de jogos digitais{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <div class="container">
+
+        <span class="tag">TN-Keys Store</span>
+
+        <h1 class="mb-3">Bem-vindo à TN<span class="text-danger">-</span>Keys</h1>
+
+        <p class="lead mb-4">
+            Encontre jogos, keys e ofertas em um só lugar.
+        </p>
+
+        <div class="d-flex flex-column flex-sm-row justify-content-center gap-2">
+
+            <a href="{% url 'jogo' %}" class="btn btn-danger btn-lg px-4">
+                <i class="bi bi-controller me-2" aria-hidden="true"></i>Ver jogos
+            </a>
+
+            {% if user.is_authenticated %}
+                <a href="{% url 'perfil' %}" class="btn btn-outline-light btn-lg px-4">
+                    <i class="bi bi-person-circle me-2" aria-hidden="true"></i>Meu perfil
+                </a>
+            {% else %}
+                <a href="{% url 'cadastro' %}" class="btn btn-outline-light btn-lg px-4">
+                    <i class="bi bi-person-plus me-2" aria-hidden="true"></i>Criar conta
+                </a>
+            {% endif %}
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
+>>>>>>> b24fc8c7fd829fce604b98f2bb869ff40ed450cb
