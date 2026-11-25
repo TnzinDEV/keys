@@ -1,0 +1,8 @@
+{# Linha de informação do perfil. Uso: {% include "partials/info_item.html" with icon="bi-person" label="Usuário" value=user.username %} #}
+<div class="info-item">
+    <div class="info-icone"><i class="bi {{ icon }}" aria-hidden="true"></i></div>
+    <div class="min-w-0">
+        <small>{{ label }}</small>
+        <span class="valor">{{ value }}</span>
+    </div>
+</div>

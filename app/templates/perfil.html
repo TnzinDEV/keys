@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Meu Perfil | TN-Keys{% endblock %}
+
+{% block content %}
+
+<div class="container page-section">
+
+    <header class="text-center mb-5">
+        <span class="badge text-bg-danger rounded-pill px-3 py-2 mb-3">
+            <i class="bi bi-person-circle me-1" aria-hidden="true"></i>MINHA CONTA
+        </span>
+        <h1 class="display-5 fw-bold mb-3">Meu Perfil</h1>
+        <p class="text-secondary mx-auto mb-0" style="max-width: 600px;">
+            Gerencie suas informações e acompanhe sua conta na TN-Keys.
+        </p>
+    </header>
+
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8 col-xl-7">
+
+            <div class="card shadow-lg overflow-hidden">
+
+                <div class="perfil-banner" aria-hidden="true"></div>
+
+                <div class="perfil-avatar" aria-hidden="true">
+                    {{ user.username|slice:":1"|upper }}
+                </div>
+
+                <div class="card-body text-center px-4 pt-3 pb-4">
+                    <h2 class="fw-bold mb-1">{{ user.username }}</h2>
+                    <p class="text-secondary mb-3">Membro da TN-Keys</p>
+
+                    <span class="badge rounded-pill border border-success text-success px-3 py-2">
+                        <i class="bi bi-check-circle-fill me-1" aria-hidden="true"></i>Conta ativa
+                    </span>
+                </div>
+
+                <div class="border-top p-4 p-md-5">
+
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="bg-danger bg-opacity-10 rounded-3 p-2 me-3">
+                            <i class="bi bi-person-vcard text-danger fs-4" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                            <h3 class="h5 fw-bold mb-1">Informações da conta</h3>
+                            <small class="text-secondary">Dados vinculados ao seu perfil</small>
+                        </div>
+                    </div>
+
+                    {% include "partials/info_item.html" with icon="bi-person" label="Usuário" value=user.username %}
+                    {% include "partials/info_item.html" with icon="bi-envelope" label="E-mail" value=user.email|default:"Não informado" %}
+                    {% include "partials/info_item.html" with icon="bi-calendar3" label="Membro desde" value=user.date_joined|date:"d/m/Y" %}
+
+                </div>
+
+                <div class="border-top p-4">
+                    <div class="row g-3">
+
+                        <div class="col-12 col-md-6">
+                            {# TODO: ligar à página de edição de perfil quando existir #}
+                            <button type="button" class="btn btn-danger w-100 py-2 fw-semibold" disabled
+                                    title="Em breve">
+                                <i class="bi bi-pencil-square me-2" aria-hidden="true"></i>Editar perfil
+                            </button>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <a href="{% url 'jogo' %}" class="btn btn-outline-light w-100 py-2 fw-semibold">
+                                <i class="bi bi-shop me-2" aria-hidden="true"></i>Voltar à loja
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

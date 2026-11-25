@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}Sobre | TN-Keys{% endblock %}
+
+{% block content %}
+
+<section class="page-section">
+    <div class="container">
+
+        <header class="text-center mb-5">
+            <span class="badge text-bg-danger mb-3">TN-KEYS</span>
+            <h1 class="display-5 fw-bold">Sobre a TN-Keys</h1>
+            <p class="lead text-secondary mx-auto" style="max-width: 650px;">
+                Uma loja criada para facilitar a busca por jogos,
+                keys digitais e boas ofertas.
+            </p>
+        </header>
+
+        <div class="row g-4 mb-5">
+
+            <div class="col-md-4">
+                <div class="card card-hover h-100 shadow">
+                    <div class="card-body p-4">
+                        <div class="fs-1 mb-3" aria-hidden="true">🎮</div>
+                        <h2 class="h4">Jogos</h2>
+                        <p class="text-secondary mb-0">
+                            Encontre jogos populares para diferentes plataformas
+                            em um catálogo simples e organizado.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card card-hover h-100 shadow">
+                    <div class="card-body p-4">
+                        <div class="fs-1 mb-3" aria-hidden="true">🔑</div>
+                        <h2 class="h4">Keys Digitais</h2>
+                        <p class="text-secondary mb-0">
+                            Produtos digitais apresentados de forma simples
+                            para você encontrar o que procura.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card card-hover h-100 shadow">
+                    <div class="card-body p-4">
+                        <div class="fs-1 mb-3" aria-hidden="true">⚡</div>
+                        <h2 class="h4">Praticidade</h2>
+                        <p class="text-secondary mb-0">
+                            Uma experiência rápida e organizada para
+                            encontrar seu próximo jogo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card shadow">
+            <div class="card-body p-4 p-md-5">
+                <div class="row align-items-center">
+
+                    <div class="col-md-8">
+                        <span class="tag">Encontre seu próximo jogo</span>
+                        <h2 class="mt-1">Confira nosso catálogo</h2>
+                        <p class="text-secondary mb-md-0">
+                            Veja os jogos disponíveis e encontre sua próxima aventura.
+                        </p>
+                    </div>
+
+                    <div class="col-md-4 text-md-end mt-4 mt-md-0">
+                        <a href="{% url 'jogo' %}" class="btn btn-danger btn-lg px-4">Ver jogos</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

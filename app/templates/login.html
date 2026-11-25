@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Entrar | TN-Keys{% endblock %}
+
+{% block content %}
+
+<div class="container page-section">
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-10 col-md-7 col-lg-5 col-xl-4">
+
+            <div class="card shadow-lg">
+                <div class="card-body p-4 p-md-5">
+
+                    <div class="text-center mb-4">
+                        <div class="auth-icon"><i class="bi bi-box-arrow-in-right" aria-hidden="true"></i></div>
+                        <h1 class="h3 fw-bold">Entrar</h1>
+                        <p class="text-secondary mb-0">Entre na sua conta TN-Keys</p>
+                    </div>
+
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {% for error in form.non_field_errors %}<div>{{ error }}</div>{% endfor %}
+                        </div>
+                    {% endif %}
+
+                    <form method="post" novalidate data-once>
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ next }}">
+
+                        {% include "partials/field.html" with field=form.username icon="bi-person" %}
+                        {% include "partials/field.html" with field=form.password icon="bi-lock" password=True %}
+
+                        <button type="submit" class="btn btn-danger w-100 py-2 fw-semibold mt-2">
+                            Entrar
+                        </button>
+                    </form>
+
+                    <p class="text-center mt-4 mb-0">
+                        <span class="text-secondary">Ainda não tem conta?</span>
+                        <a href="{% url 'cadastro' %}" class="text-danger text-decoration-none fw-semibold">Criar conta</a>
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

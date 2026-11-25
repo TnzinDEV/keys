@@ -1,0 +1,613 @@
+/* =========================================================
+   TN-Keys — estilos próprios
+   Complementa o Bootstrap 5.3 (tema escuro via data-bs-theme).
+   Não redefine reset global nem a classe .btn do Bootstrap.
+   ========================================================= */
+
+
+/* ---------- 1. Tokens ---------- */
+
+:root {
+    --tn-surface: #151515;
+    --tn-surface-2: #1c1c1c;
+    --tn-border: #2a2a2a;
+    --tn-muted: #9b9b9b;
+    --tn-radius: 14px;
+    --tn-ease: 0.25s ease;
+}
+
+[data-bs-theme="dark"] {
+    --bs-body-bg: #0f0f0f;
+    --bs-body-bg-rgb: 15, 15, 15;
+    --bs-border-color: var(--tn-border);
+}
+
+
+/* ---------- 2. Base ---------- */
+
+body {
+    background-color: var(--bs-body-bg);
+}
+
+img {
+    max-width: 100%;
+}
+
+:focus-visible {
+    outline: 2px solid var(--bs-danger);
+    outline-offset: 2px;
+}
+
+::selection {
+    background: rgba(var(--bs-danger-rgb), 0.45);
+    color: #fff;
+}
+
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 1rem;
+    z-index: 2000;
+    padding: 0.5rem 1rem;
+    border-radius: 0 0 8px 8px;
+    background: var(--bs-danger);
+    color: #fff;
+    text-decoration: none;
+}
+
+.skip-link:focus {
+    top: 0;
+    color: #fff;
+}
+
+
+/* ---------- 3. Navbar ---------- */
+
+.navbar-tn {
+    background: rgba(10, 10, 10, 0.92);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--tn-border);
+}
+
+.navbar-brand {
+    letter-spacing: 1px;
+}
+
+.navbar-tn .nav-link {
+    padding-inline: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    transition: color var(--tn-ease);
+}
+
+.navbar-tn .nav-link:hover,
+.navbar-tn .nav-link:focus {
+    color: #fff;
+}
+
+.navbar-tn .nav-link.active {
+    color: #fff;
+    font-weight: 600;
+}
+
+@media (min-width: 992px) {
+    .navbar-tn .nav-link {
+        position: relative;
+    }
+
+    .navbar-tn .nav-link.active::after {
+        content: "";
+        position: absolute;
+        left: 1rem;
+        right: 1rem;
+        bottom: 0;
+        height: 2px;
+        border-radius: 2px;
+        background: var(--bs-danger);
+    }
+}
+
+@media (max-width: 991.98px) {
+    .navbar-user {
+        padding-bottom: 0.75rem;
+    }
+}
+
+
+/* ---------- 4. Componentes gerais ---------- */
+
+.card {
+    --bs-card-bg: var(--tn-surface);
+    --bs-card-border-color: var(--tn-border);
+    border-radius: var(--tn-radius);
+}
+
+/* Só os cards "clicáveis/informativos" sobem no hover (não formulários) */
+.card-hover {
+    transition: transform var(--tn-ease), border-color var(--tn-ease), box-shadow var(--tn-ease);
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    border-color: var(--bs-danger);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+}
+
+.btn-danger {
+    box-shadow: 0 5px 15px rgba(var(--bs-danger-rgb), 0.2);
+}
+
+.form-control,
+.form-select {
+    padding: 0.7rem 0.9rem;
+}
+
+.form-control:focus {
+    border-color: var(--bs-danger);
+    box-shadow: 0 0 0 0.25rem rgba(var(--bs-danger-rgb), 0.25);
+}
+
+.tag {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    color: var(--bs-danger);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.page-section {
+    padding-block: 3rem;
+}
+
+.page-header {
+    margin-bottom: 2.25rem;
+}
+
+.page-header h1 {
+    font-weight: 800;
+}
+
+.page-header p {
+    margin: 0.5rem 0 0;
+    color: var(--tn-muted);
+}
+
+
+/* ---------- 5. Mensagens e erros de formulário ---------- */
+
+.field-error {
+    margin-top: 0.35rem;
+    color: #ff6b78;
+    font-size: 0.875rem;
+}
+
+.has-error .form-control {
+    border-color: var(--bs-danger);
+}
+
+.form-text ul {
+    margin: 0;
+    padding-left: 1.1rem;
+}
+
+.form-text li {
+    margin-bottom: 0.15rem;
+}
+
+
+/* ---------- 6. Home (hero) ---------- */
+
+.hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 72vh;
+    padding-block: 4rem;
+    overflow: hidden;
+    text-align: center;
+    background:
+        radial-gradient(circle at 80% 0%, rgba(var(--bs-danger-rgb), 0.28), transparent 45%),
+        radial-gradient(circle at 10% 100%, rgba(var(--bs-danger-rgb), 0.14), transparent 40%),
+        var(--bs-body-bg);
+}
+
+.hero h1 {
+    font-size: clamp(2.2rem, 6vw, 3.75rem);
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.hero .lead {
+    max-width: 560px;
+    margin-inline: auto;
+    color: var(--tn-muted);
+}
+
+
+/* ---------- 7. Catálogo de jogos ---------- */
+
+.jogos-container {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+}
+
+.jogos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 1.5rem;
+}
+
+.jogo-card {
+    position: relative;               /* necessário para o stretched-link */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--tn-surface);
+    border: 1px solid var(--tn-border);
+    border-radius: var(--tn-radius);
+    transition: transform var(--tn-ease), border-color var(--tn-ease), box-shadow var(--tn-ease);
+}
+
+.jogo-card:hover,
+.jogo-card:focus-within {
+    transform: translateY(-6px);
+    border-color: var(--bs-danger);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+}
+
+.jogo-imagem {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #0d0d0d;
+}
+
+.jogo-imagem img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.jogo-card:hover .jogo-imagem img {
+    transform: scale(1.06);
+}
+
+.imagem-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: #666;
+}
+
+.imagem-placeholder .icone {
+    font-size: 3rem;
+    line-height: 1;
+}
+
+.imagem-placeholder small {
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+}
+
+.badge-jogo {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    padding: 0.35rem 0.6rem;
+    border-radius: 6px;
+    background: var(--bs-danger);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.jogo-info {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 1.25rem;
+}
+
+.jogo-titulo {
+    margin: 0 0 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.jogo-titulo a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.jogo-descricao {
+    flex-grow: 1;
+    margin: 0 0 1.25rem;
+    color: var(--tn-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.jogo-detalhes {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 1.1rem;
+}
+
+.preco-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.preco-box small {
+    margin-bottom: 2px;
+    color: #777;
+    font-size: 0.7rem;
+}
+
+.preco {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.estoque,
+.sem-estoque {
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.estoque { color: #42d77d; }
+.sem-estoque { color: #ff5555; }
+
+.btn-comprar,
+.btn-esgotado {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 0;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.btn-comprar {
+    background: var(--bs-danger);
+    color: #fff;
+    transition: background var(--tn-ease);
+}
+
+.jogo-card:hover .btn-comprar {
+    background: #bb2d3b;
+}
+
+.btn-esgotado {
+    background: #292929;
+    color: #777;
+}
+
+.jogo-card--esgotado .jogo-imagem img {
+    filter: grayscale(1);
+    opacity: 0.55;
+}
+
+.sem-produtos {
+    grid-column: 1 / -1;
+    padding: 4.5rem 1.25rem;
+    text-align: center;
+    background: var(--tn-surface);
+    border: 1px solid var(--tn-border);
+    border-radius: var(--tn-radius);
+}
+
+.sem-produtos .icone {
+    font-size: 3rem;
+}
+
+.sem-produtos h2 {
+    margin: 1rem 0 0.35rem;
+    font-size: 1.5rem;
+}
+
+.sem-produtos p {
+    margin: 0;
+    color: #888;
+}
+
+
+/* ---------- 8. Detalhes do jogo ---------- */
+
+.detalhe-imagem {
+    height: 100%;
+    min-height: 320px;
+    background: #0d0d0d;
+}
+
+.detalhe-imagem img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.detalhe-preco {
+    color: #42d77d;
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.breadcrumb {
+    --bs-breadcrumb-divider-color: #666;
+    --bs-breadcrumb-item-active-color: var(--tn-muted);
+}
+
+.breadcrumb a {
+    color: var(--tn-muted);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: #fff;
+}
+
+
+/* ---------- 9. Login, cadastro e perfil ---------- */
+
+.auth-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    background: rgba(var(--bs-danger-rgb), 0.12);
+    color: var(--bs-danger);
+    font-size: 1.75rem;
+}
+
+.perfil-banner {
+    height: 160px;
+    background:
+        radial-gradient(circle at top right, rgba(220, 53, 69, 0.45), transparent 35%),
+        linear-gradient(135deg, #dc3545 0%, #74131d 45%, #080808 100%);
+}
+
+.perfil-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    margin: -60px auto 0;
+    position: relative;
+    border: 3px solid var(--bs-danger);
+    border-radius: 50%;
+    background: #000;
+    color: var(--bs-danger);
+    font-size: 3rem;
+    font-weight: 800;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #0a0a0a;
+    border: 1px solid var(--tn-border);
+    border-radius: 12px;
+}
+
+.info-item + .info-item {
+    margin-top: 0.75rem;
+}
+
+.info-item .info-icone {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: var(--tn-surface-2);
+    color: var(--bs-danger);
+    font-size: 1.35rem;
+}
+
+.info-item small {
+    display: block;
+    margin-bottom: 2px;
+    color: var(--tn-muted);
+}
+
+.info-item .valor {
+    color: #fff;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+
+/* ---------- 10. Footer ---------- */
+
+.footer-tn {
+    background: #0a0a0a;
+    border-top: 1px solid var(--tn-border);
+}
+
+.footer-tn .social a {
+    color: rgba(255, 255, 255, 0.75);
+    transition: color var(--tn-ease), transform var(--tn-ease);
+    display: inline-block;
+}
+
+.footer-tn .social a:hover {
+    color: var(--bs-danger);
+    transform: translateY(-2px);
+}
+
+
+/* ---------- 11. Responsivo ---------- */
+
+@media (max-width: 575.98px) {
+    .jogos-container {
+        padding: 2rem 1rem;
+    }
+
+    .page-section {
+        padding-block: 2rem;
+    }
+
+    .page-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .detalhe-imagem {
+        min-height: 240px;
+    }
+
+    .detalhe-preco {
+        font-size: 2rem;
+    }
+}
+
+
+/* ---------- 12. Acessibilidade: menos movimento ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        animation: none !important;
+    }
+
+    .jogo-card:hover,
+    .card-hover:hover {
+        transform: none;
+    }
+}
